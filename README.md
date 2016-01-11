@@ -62,7 +62,7 @@ $ mkdir dev
 $ touch dev/package.json
 $ vim dev/package.json
 {
-  "dependencies: {}
+  "dependencies": {}
 }
 ```
 
