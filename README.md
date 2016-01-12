@@ -55,16 +55,7 @@ $ npm publish                 # Publish main project
 $ cd dev && npm publish       # Publish dev project
 ```
 
-If you are _bootstrapping_ a new archetype, this should get you going:
-
-```sh
-$ mkdir dev
-$ touch dev/package.json
-$ vim dev/package.json
-{
-  "dependencies": {}
-}
-```
+If you are _bootstrapping_ a new archetype, a new file at `dev/package.json` will be generated for you automatically.
 
 And you should be good to run `builder-support gen-dev` in the project root.
 
