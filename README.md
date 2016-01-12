@@ -25,9 +25,8 @@ This tools assumes an archetype structure of:
 
 * `package.json` - Dependencies needed for production tasks and `scripts` entry
   that has tasks for both production and development. Must have `name`,
-  `description`, `dependencies` fields.
+  `description` fields.
 * `dev/package.json` - Dependencies for development tasks only.
-  Must have a `dependencies` field.
 
 Assuming those exist, then the tool:
 
@@ -55,16 +54,7 @@ $ npm publish                 # Publish main project
 $ cd dev && npm publish       # Publish dev project
 ```
 
-If you are _bootstrapping_ a new archetype, this should get you going:
-
-```sh
-$ mkdir dev
-$ touch dev/package.json
-$ vim dev/package.json
-{
-  "dependencies": {}
-}
-```
+If you are _bootstrapping_ a new archetype, a new file at `dev/package.json` will be generated for you automatically.
 
 And you should be good to run `builder-support gen-dev` in the project root.
 
