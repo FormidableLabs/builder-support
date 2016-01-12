@@ -25,9 +25,8 @@ This tools assumes an archetype structure of:
 
 * `package.json` - Dependencies needed for production tasks and `scripts` entry
   that has tasks for both production and development. Must have `name`,
-  `description`, `dependencies` fields.
+  `description` fields.
 * `dev/package.json` - Dependencies for development tasks only.
-  Must have a `dependencies` field.
 
 Assuming those exist, then the tool:
 
