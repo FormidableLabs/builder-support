@@ -1,4 +1,5 @@
 [![Travis Status][trav_img]][trav_site]
+[![Coverage Status][cov_img]][cov_site]
 
 Builder Support Tools
 =====================
@@ -61,3 +62,6 @@ And you should be good to run `builder-support gen-dev` in the project root.
 [builder]: https://github.com/FormidableLabs/builder
 [trav_img]: https://api.travis-ci.org/FormidableLabs/builder-support.svg
 [trav_site]: https://travis-ci.org/FormidableLabs/builder-support
+[cov]: https://coveralls.io
+[cov_img]: https://img.shields.io/coveralls/FormidableLabs/builder-support.svg
+[cov_site]: https://coveralls.io/r/FormidableLabs/builder-support
