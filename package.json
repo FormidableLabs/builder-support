@@ -1,6 +1,6 @@
 {
   "name": "builder-support",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Builder support libraries",
   "repository": {
     "type": "git",
