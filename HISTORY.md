@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.3.0
+
+* Persist `peerDependencies` in `dev/package.json`
+
 ## 0.2.0
 
 * Add `.npmrc` to list of files copied. All files besides `package.json` are
