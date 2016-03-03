@@ -105,7 +105,8 @@ describe("lib/dev", function () {
         "package.json": JSON.stringify({
           name: "foo",
           description: "foo desc",
-          dependencies: {}
+          dependencies: {},
+          peerDependencies: {}
         }),
         ".gitignore": "IGNORE",
         ".npmrc": "NPM",
@@ -113,6 +114,9 @@ describe("lib/dev", function () {
         "dev/package.json": JSON.stringify({
           dependencies: {
             "foo": "^1.0.0"
+          },
+          "peerDependencies": {
+            "bar": "^2.0.0"
           }
         })
       });
@@ -126,6 +130,9 @@ describe("lib/dev", function () {
         expect(devPkg).to.have.property("description", "foo desc (Development)");
         expect(devPkg).to.have.property("dependencies").to.eql({
           "foo": "^1.0.0"
+        });
+        expect(devPkg).to.have.property("peerDependencies").to.eql({
+          "bar": "^2.0.0"
         });
         expect(devPkg).to.have.property("devDependencies").to.eql({});
 
