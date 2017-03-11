@@ -38,7 +38,8 @@ describe("lib/dev", function () {
           dependencies: {}
         }),
         ".gitignore": "",
-        "README.md": ""
+        "README.md": "",
+        "dev": {}
       });
 
       genDev(function (err) {
@@ -46,6 +47,27 @@ describe("lib/dev", function () {
           .to.be.ok.and
           .to.have.property("message").and
             .to.contain("name");
+
+        done();
+      });
+    });
+
+    it("fails on missing ./dev + ../ARCHETYPE-dev", function (done) {
+      mock({
+        "package.json": JSON.stringify({
+          name: "foo",
+          description: "foo desc",
+          dependencies: {}
+        }),
+        ".gitignore": "",
+        "README.md": ""
+      });
+
+      genDev(function (err) {
+        expect(err)
+          .to.be.ok.and
+          .to.have.property("message").and
+            .to.contain("Could not find dev directories");
 
         done();
       });
@@ -79,7 +101,8 @@ describe("lib/dev", function () {
           dependencies: {}
         }),
         ".gitignore": "IGNORE",
-        "README.md": "READ"
+        "README.md": "READ",
+        "dev": {}
       });
 
       genDev(function (err) {
@@ -152,7 +175,8 @@ describe("lib/dev", function () {
           name: "foo",
           description: "foo desc",
           dependencies: {}
-        })
+        }),
+        "dev": {}
       });
 
       genDev(function (err) {
