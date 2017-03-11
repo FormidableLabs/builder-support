@@ -1,6 +1,14 @@
 History
 =======
 
+## Unreleased
+
+* Add support for `../ARCHETYPE-dev` fallback directory if `./dev` directory
+  does not exists.
+* **Breaking Change**: Do not generate `./dev` directory on a new project if it
+  does not exist. Either a `../ARCHETYPE-dev` or `./dev` directory must already
+  exist before running `builder-support gen-dev`.
+
 ## 0.3.0
 
 * Persist `peerDependencies` in `dev/package.json`

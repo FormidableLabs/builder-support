@@ -27,35 +27,50 @@ This tools assumes an archetype structure of:
 * `package.json` - Dependencies needed for production tasks and `scripts` entry
   that has tasks for both production and development. Must have `name`,
   `description` fields.
-* `dev/package.json` - Dependencies for development tasks only.
+* A development sub-directory or independent repository containing dependencies
+  for development tasks only.
+    * `dev/package.json`
+    * `../ARCHETYPE-dev/package.json`
 
 Assuming those exist, then the tool:
 
-* Modifies `dev/package.json` as follows:
+* Modifies `ARCHETYPE-dev/package.json` as follows:
     * Copies the root `package.json`
     * Removes `package.json:devDependencies`
-    * Replaces `package.json:dependencies` with `dev/package.json:dependencies`
-    * Updates things like the `name` field to represent `dev`
+    * Replaces `package.json:dependencies` with
+      `ARCHETYPE-dev/package.json:dependencies`
+    * Updates things like the `name` field to represent `ARCHETYPE-dev`
 
-* Copies `README.md` to `dev/README.md`
-* Copies `.gitignore` to `dev/.gitignore`
+* Copies `README.md` to `ARCHETYPE-dev/README.md`
+* Copies `.gitignore` to `ARCHETYPE-dev/.gitignore`
 
 This supports a workflow as follows:
 
 ```sh
 $ vim HISTORY.md              # Version notes
 $ vim package.json            # Bump version
-$ builder-support gen-dev     # Generate `dev/package.json|README.md|.gitignore`
+$ builder-support gen-dev     # Generate `ARCHETYPE-dev` files
 $ npm run builder:check       # Last check!
 $ git add .
 $ git commit -m "Version bump"
 $ git tag -a "vNUMBER" -m "Version NUMBER"
 $ git push && git push --tags
 $ npm publish                 # Publish main project
-$ cd dev && npm publish       # Publish dev project
+
+# Publish dev project in same repo
+$ cd dev && npm publish
+
+# (OR) Publish dev project in different, parallel repo
+$ cd ../ARCHETYPE-dev
+$ git commit -m "Version bump"
+$ git tag -a "vNUMBER" -m "Version NUMBER"
+$ git push && git push --tags
+$ npm publish                 # Publish dev project
 ```
 
-If you are _bootstrapping_ a new archetype, a new file at `dev/package.json` will be generated for you automatically.
+If you are _bootstrapping_ a new archetype you will need to ensure either that
+a `ARCHETYPE/dev` or `../ARCHETYPE-dev` directory exists. The rest of the files
+when then be properly generated into the dev project.
 
 And you should be good to run `builder-support gen-dev` in the project root.
 
