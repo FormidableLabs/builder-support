@@ -168,6 +168,83 @@ describe("lib/dev", function () {
     });
   });
 
+  describe("../ARCHETYPE-dev/package.json", function () {
+
+    it("creates missing ../ARCHETYPE-dev/package.json", function (done) {
+      mock({
+        "package.json": JSON.stringify({
+          name: "foo",
+          description: "foo desc",
+          dependencies: {}
+        }),
+        ".gitignore": "IGNORE",
+        "README.md": "READ",
+        "../foo-dev": {}
+      });
+
+      genDev(function (err) {
+        if (err) { return done(err); }
+
+        // NOTE: Sync methods are OK here because mocked and in-memory.
+        var devPkg = fs.readJsonSync("../foo-dev/package.json");
+        expect(devPkg).to.have.property("name", "foo-dev");
+        expect(devPkg).to.have.property("description", "foo desc (Development)");
+        expect(devPkg).to.have.property("dependencies").to.eql({});
+        expect(devPkg).to.have.property("devDependencies").to.eql({});
+
+        expect(fs.readFileSync(".gitignore").toString()).to.equal("IGNORE");
+        expect(fs.existsSync(".npmrc")).to.equal(false);
+        expect(fs.readFileSync("README.md").toString()).to.equal("READ");
+
+        done();
+      });
+    });
+
+    it("updates existing ../ARCHETYPE-dev/package.json", function (done) {
+      mock({
+        "package.json": JSON.stringify({
+          name: "foo",
+          description: "foo desc",
+          dependencies: {},
+          peerDependencies: {}
+        }),
+        ".gitignore": "IGNORE",
+        ".npmrc": "NPM",
+        "README.md": "READ",
+        "../foo-dev/package.json": JSON.stringify({
+          dependencies: {
+            "foo": "^1.0.0"
+          },
+          "peerDependencies": {
+            "bar": "^2.0.0"
+          }
+        })
+      });
+
+      genDev(function (err) {
+        if (err) { return done(err); }
+
+        // NOTE: Sync methods are OK here because mocked and in-memory.
+        var devPkg = fs.readJsonSync("../foo-dev/package.json");
+        expect(devPkg).to.have.property("name", "foo-dev");
+        expect(devPkg).to.have.property("description", "foo desc (Development)");
+        expect(devPkg).to.have.property("dependencies").to.eql({
+          "foo": "^1.0.0"
+        });
+        expect(devPkg).to.have.property("peerDependencies").to.eql({
+          "bar": "^2.0.0"
+        });
+        expect(devPkg).to.have.property("devDependencies").to.eql({});
+
+        expect(fs.readFileSync(".gitignore").toString()).to.equal("IGNORE");
+        expect(fs.readFileSync(".npmrc").toString()).to.equal("NPM");
+        expect(fs.readFileSync("README.md").toString()).to.equal("READ");
+
+        done();
+      });
+    });
+  });
+
   describe("file copying", function () {
     it("allows just package.json", function (done) {
       mock({
