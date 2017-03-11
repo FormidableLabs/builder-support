@@ -1,7 +1,7 @@
 History
 =======
 
-## Unreleased
+## 0.4.0
 
 * Add support for `../ARCHETYPE-dev` fallback directory if `./dev` directory
   does not exists.

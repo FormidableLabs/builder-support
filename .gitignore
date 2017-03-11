@@ -5,8 +5,10 @@
 \.project
 bower_components
 node_modules
-npm-debug\.log*
-phantomjsdriver\.log
+phantomjsdriver.log
+npm-debug.log*
+yarn.lock
+yarn-error.log*
 
 # Build
 dist
