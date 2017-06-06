@@ -16,6 +16,11 @@ if (!action) {
 }
 
 action(function (err) {
-  /*eslint-disable no-process-exit*/
+  /*eslint-disable no-process-exit, no-console*/
+
+  if (err) {
+    console.error(err);
+  }
+
   process.exit(err ? err.code || 1 : 0);
 });
