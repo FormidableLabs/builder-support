@@ -1,6 +1,10 @@
 History
 =======
 
+## 0.4.1
+
+* Display errors to console. ( [@InsidersByte][] )
+
 ## 0.4.0
 
 * Add support for `../ARCHETYPE-dev` fallback directory if `./dev` directory
@@ -11,7 +15,7 @@ History
 
 ## 0.3.0
 
-* Persist `peerDependencies` in `dev/package.json`
+* Persist `peerDependencies` in `dev/package.json`.
 
 ## 0.2.0
 
@@ -30,5 +34,6 @@ History
 * Add `gen-dev` action.
 * Initial release.
 
+[@InsidersByte]: https://github.com/InsidersByte
 [@ryan-roemer]: https://github.com/ryan-roemer
 [@zachhale]: https://github.com/zachhale
