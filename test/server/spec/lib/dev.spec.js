@@ -205,6 +205,14 @@ describe("lib/dev", function () {
         "package.json": JSON.stringify({
           name: "foo",
           description: "foo desc",
+          repository: {
+            type: "git",
+            url: "https://github.com/FormidableLabs/no-match.git"
+          },
+          bugs: {
+            url: "https://github.com/FormidableLabs/foo/issues"
+          },
+          homepage: "https://github.com/FormidableLabs/foo",
           dependencies: {},
           peerDependencies: {}
         }),
@@ -228,6 +236,12 @@ describe("lib/dev", function () {
         var devPkg = fs.readJsonSync("../foo-dev/package.json");
         expect(devPkg).to.have.property("name", "foo-dev");
         expect(devPkg).to.have.property("description", "foo desc (Development)");
+        expect(devPkg).to.have.nested.property("repository.url",
+          "https://github.com/FormidableLabs/no-match.git");
+        expect(devPkg).to.have.nested.property("bugs.url",
+          "https://github.com/FormidableLabs/foo-dev/issues");
+        expect(devPkg).to.have.nested.property("homepage",
+          "https://github.com/FormidableLabs/foo-dev");
         expect(devPkg).to.have.property("dependencies").to.eql({
           "foo": "^1.0.0"
         });

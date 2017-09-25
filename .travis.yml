@@ -18,8 +18,8 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 script:
-  - npm --version
-  - npm run builder:check
+  - yarn --version
+  - yarn run builder:check
 
   # Send coverage reports to coveralls.
   - ls  coverage/server/lcov.info | cat
