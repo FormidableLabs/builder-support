@@ -1,6 +1,12 @@
 History
 =======
 
+## Unreleased
+
+* Add extra `package.json` mutations for `../ARCHETYPE-dev` scenario.
+* Update Travis to Nodes 4, 6, 8. And use yarn.
+* Upgrade all dependencies.
+
 ## 0.4.1
 
 * Display errors to console. ( [@InsidersByte][] )
