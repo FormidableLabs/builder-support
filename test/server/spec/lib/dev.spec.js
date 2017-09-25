@@ -25,7 +25,7 @@ describe("lib/dev", function () {
         expect(err)
           .to.be.ok.and
           .to.have.property("message").and
-            .to.contain("package.json");
+            .to.contain("package.json"); // eslint-disable-line indent
 
         done();
       });
@@ -46,7 +46,7 @@ describe("lib/dev", function () {
         expect(err)
           .to.be.ok.and
           .to.have.property("message").and
-            .to.contain("name");
+            .to.contain("name"); // eslint-disable-line indent
 
         done();
       });
@@ -67,7 +67,7 @@ describe("lib/dev", function () {
         expect(err)
           .to.be.ok.and
           .to.have.property("message").and
-            .to.contain("Could not find dev directories");
+            .to.contain("Could not find dev directories"); // eslint-disable-line indent
 
         done();
       });
@@ -84,7 +84,7 @@ describe("lib/dev", function () {
         expect(err)
           .to.be.ok.and
           .to.have.property("message").and
-            .to.contain("Unexpected token");
+            .to.contain("Unexpected token"); // eslint-disable-line indent
 
         done();
       });
@@ -106,7 +106,7 @@ describe("lib/dev", function () {
       });
 
       genDev(function (err) {
-        if (err) { return done(err); }
+        if (err) { return void done(err); }
 
         // NOTE: Sync methods are OK here because mocked and in-memory.
         var devPkg = fs.readJsonSync("dev/package.json");
@@ -145,7 +145,7 @@ describe("lib/dev", function () {
       });
 
       genDev(function (err) {
-        if (err) { return done(err); }
+        if (err) { return void done(err); }
 
         // NOTE: Sync methods are OK here because mocked and in-memory.
         var devPkg = fs.readJsonSync("dev/package.json");
@@ -183,7 +183,7 @@ describe("lib/dev", function () {
       });
 
       genDev(function (err) {
-        if (err) { return done(err); }
+        if (err) { return void done(err); }
 
         // NOTE: Sync methods are OK here because mocked and in-memory.
         var devPkg = fs.readJsonSync("../foo-dev/package.json");
@@ -222,7 +222,7 @@ describe("lib/dev", function () {
       });
 
       genDev(function (err) {
-        if (err) { return done(err); }
+        if (err) { return void done(err); }
 
         // NOTE: Sync methods are OK here because mocked and in-memory.
         var devPkg = fs.readJsonSync("../foo-dev/package.json");
@@ -257,7 +257,7 @@ describe("lib/dev", function () {
       });
 
       genDev(function (err) {
-        if (err) { return done(err); }
+        if (err) { return void done(err); }
 
         // NOTE: Sync methods are OK here because mocked and in-memory.
         var devPkg = fs.readJsonSync("dev/package.json");

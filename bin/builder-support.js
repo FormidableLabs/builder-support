@@ -8,7 +8,7 @@ var ACTIONS = {
 /*eslint-enable global-require*/
 
 // builder-support <action>
-var actionFlag = process.argv[2];
+var actionFlag = process.argv[2]; // eslint-disable-line no-magic-numbers
 var action = ACTIONS[actionFlag];
 
 if (!action) {

@@ -1,0 +1,11 @@
+---
+env:
+  mocha: true
+
+globals:
+  expect: false
+  sandbox: false
+
+rules:
+  no-unused-expressions: off  # Disable for Chai expression assertions.
+  max-nested-callbacks: off   # Disable for nested describes.
