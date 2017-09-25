@@ -1,7 +1,7 @@
 History
 =======
 
-## Unreleased
+## 0.5.0
 
 * Add extra `package.json` mutations for `../ARCHETYPE-dev` scenario.
 * Update Travis to Nodes 4, 6, 8. And use yarn.
