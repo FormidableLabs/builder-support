@@ -16,8 +16,8 @@
     "builder-support": "bin/builder-support.js"
   },
   "scripts": {
-    "builder:lint-server": "eslint --color -c .eslintrc-server lib bin",
-    "builder:lint-server-test": "eslint --color -c .eslintrc-server-test test",
+    "builder:lint-server": "eslint lib bin",
+    "builder:lint-server-test": "eslint test",
     "builder:lint": "npm run builder:lint-server && npm run builder:lint-server-test",
     "builder:test": "mocha --opts test/server/mocha.opts test/server/spec",
     "builder:test-cov": "istanbul cover --config .istanbul.server.yml _mocha -- --opts test/server/mocha.opts test/server/spec",
@@ -25,18 +25,19 @@
     "builder:check-ci": "npm run builder:lint && npm run builder:test-cov"
   },
   "dependencies": {
-    "async": "^1.5.0",
-    "fs-extra": "^0.30.0"
+    "async": "^2.5.0",
+    "fs-extra": "^4.0.2"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
+    "chai": "^4.1.2",
     "coveralls": "^2.11.6",
-    "eslint": "^1.10.1",
-    "eslint-config-defaults": "^7.0.1",
-    "eslint-plugin-filenames": "^0.1.2",
+    "eslint": "^4.7.2",
+    "eslint-config-formidable": "^3.0.0",
+    "eslint-plugin-filenames": "^1.1.0",
+    "eslint-plugin-import": "^2.2.0",
     "istanbul": "^0.4.2",
-    "mocha": "^2.3.4",
-    "mock-fs": "3.10.0",
-    "sinon": "^1.17.2"
+    "mocha": "^3.5.3",
+    "mock-fs": "4.4.1",
+    "sinon": "^3.3.0"
   }
 }
