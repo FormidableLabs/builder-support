@@ -37,8 +37,8 @@ Assuming those exist, then the tool:
 * Modifies `ARCHETYPE-dev/package.json` as follows:
     * Copies the root `package.json`
     * Removes `package.json:devDependencies`
-    * Replaces `package.json:dependencies` with
-      the root's `package.json:dependencies`
+    * Replaces `package.json:dependencies` that were copied from root with
+      `ARCHTYPE-dev/package.json:dependencies`
     * Updates things like the `name` field to represent `ARCHETYPE-dev`
 
 * Copies `README.md` to `ARCHETYPE-dev/README.md`
