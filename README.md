@@ -28,9 +28,9 @@ This tools assumes an archetype structure of:
   that has tasks for both production and development. Must have `name`,
   `description` fields.
 * A development sub-directory or independent repository containing dependencies
-  for development tasks only.
-    * `dev/package.json`
-    * `../ARCHETYPE-dev/package.json`
+  for development tasks only. One of the following should exist:
+    * `./dev`
+    * `../ARCHETYPE-dev`
 
 Assuming those exist, then the tool:
 
@@ -38,7 +38,7 @@ Assuming those exist, then the tool:
     * Copies the root `package.json`
     * Removes `package.json:devDependencies`
     * Replaces `package.json:dependencies` with
-      `ARCHETYPE-dev/package.json:dependencies`
+      the root's `package.json:dependencies`
     * Updates things like the `name` field to represent `ARCHETYPE-dev`
 
 * Copies `README.md` to `ARCHETYPE-dev/README.md`
